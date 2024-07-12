@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock Exam</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Roboto", sans-serif;
+        background-color: #e9ecef;
+      }
+      .container {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 90%;
+        width: 400px;
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #343a40;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+      }
+      p {
+        margin-bottom: 15px;
+        color: #6c757d;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+      }
+      .start-button {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      .start-button:hover {
+        background-color: #0056b3;
+      }
+      .start-button a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mock Exam</h1>
+      <p>Please read the instructions carefully before starting the test:</p>
+      <p>1. Make sure you have a stable internet connection.</p>
+      <p>2. Do not refresh the page during the test.</p>
+      <button class="start-button">
+        <a href="{{ url_for('MDCATEXAM') }}">Start Test</a>
+      </button>
+    </div>
+  </body>
+</html>

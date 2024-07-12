@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Dashboard.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h1 style="align-self: center">
+          <a
+            href="{{ url_for('dashboard') }}"
+            style="text-decoration: none; color: inherit"
+          >
+            Educatify
+          </a>
+        </h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('dashboard') }}" title="Dashboard"
+                ><i class="fa fa-tachometer-alt"></i
+              ></a>
+            </li>
+            <li>
+              <a href="{{ url_for('show_scores') }}" title="Scores"><i class="fa fa-edit"></i></a>
+            </li>
+            <li>
+              <a href="{{ url_for('top_users') }}" title="Scoreboard"
+                ><i class="fa fa-user-friends"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="upgrade-section">
+          <div class="user-info">
+            <!-- Assuming your image is stored in static/pictures/student.png -->
+            <a href="{{ url_for('profile') }}">
+              <img
+                src="{{ url_for('static', filename='pictures/student.png') }}"
+                alt="User Avatar"
+                style="cursor: pointer"
+              />
+            </a>
+          </div>
+          <h4>{{ username }}</h4>
+          <button class="upgrade-button">
+            <a href="{{ url_for('login') }}" style="text-decoration: none; color: inherit;">Sign Out</a>
+          </button>
+          
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="header">
+          <h1>Hi {{ username }}!</h1>
+          <p>Ready to start your Entry Test preparation?</p>
+          <button class="signoutbutton">
+            <a href="{{ url_for('login') }}" style="text-decoration: none; color: inherit;">Sign Out</a></button>
+        </header>
+        <section class="overview">
+          <div class="stats">
+            <!-- Added six stat cards -->
+             <!--BIOLOGY-->
+            <a href="BiologyQuiz" style="text-decoration: none; color: black">
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/bio.png') }}"
+                  />
+                </div>
+                <div class="stat-label">Biology</div>
+              </div></a
+            >
+            <!--PHYSICS-->
+            <a href="/PhysicsQuiz" style="text-decoration: none; color: black">
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/phy.png') }}"
+                  />
+                </div>
+                <div class="stat-label">Physics</div>
+              </div></a
+            >
+            <!--CHEMISTRY-->
+            <a
+              href="/ChemistryQuiz"
+              style="text-decoration: none; color: black"
+            >
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/chem.png') }}"
+                  />
+                </div>
+                <div class="stat-label">Chemistry</div>
+              </div></a
+            >
+
+            <!--English-->
+            <a href="/EnglishQuiz" style="text-decoration: none; color: black">
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/eng.png') }}"
+                  />
+                </div>
+                <div class="stat-label">English</div>
+              </div></a
+            >
+            <!--LOGICAL-->
+            <a href="/LogicalQuiz" style="text-decoration: none; color: black">
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/logical.png') }}"
+                  />
+                </div>
+                <div class="stat-label">Logical Reasoning</div>
+              </div></a
+            >
+            <!--MATHS-->
+            <a
+              href="/MathsQuiz"
+              style="text-decoration: none; color: black"
+            >
+              <div class="stat">
+                <div class="stat-value">
+                  <img
+                    src="{{ url_for('static', filename='pictures/math.png') }}"
+                  />
+                </div>
+                <div class="stat-label">Maths</div>
+              </div></a
+            >
+        </section>
+        <section class="projects">
+          <div class="project-card">
+            <img
+              src="{{ url_for('static', filename='pictures/mockexam.png') }}"
+            />
+            <div class="project-details">
+              <h3>Mock Exam</h3>
+              <p>Solve Mock Exam to prepare yourself for real test.</p>
+              <div class="project-info">
+                <span>MDCAT</span>
+                <span>200 Questions</span>
+              </div>
+            </div>
+            <a href="{{ url_for('MOCKEXAM') }}" style="text-decoration: none; color: inherit;"><button class="view-button">View</button></a>
+          </div>
+          <div class="project-card">
+            <img
+              src="{{ url_for('static', filename='pictures/biomockexam.png') }}"
+            />
+            <div class="project-details">
+              <h3>One Shot Biology</h3>
+              <p>Solve Biology MCQ's which cover 40% of MDCAT test.</p>
+              <div class="project-info">
+                <span>Biology</span>
+                <span>50 Questions</span>
+              </div>
+            </div>
+            <a href="{{ url_for('BIOONESHOT') }}" style="text-decoration: none; color: inherit;"><button class="view-button">View</button></a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

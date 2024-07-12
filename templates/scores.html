@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Scores</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .content {
+        display: flex;
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px 0;
+        flex-wrap: wrap; /* Ensures proper wrap on smaller screens */
+        justify-content: space-between; /* Distributes items evenly along the main axis */
+        align-items: center;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 10px; /* Adds margin between the two containers */
+        flex: 1 1 calc(60% - 10px); /* Flex properties adjusted for left container */
+        max-width: calc(50% - 10px);
+      }
+
+      .mock-test {
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 10px; /* Adds margin between the two containers */
+        flex: 1 1 calc(40% - 10px); /* Flex properties adjusted for right container */
+        max-width: calc(40% - 10px);
+        height: 320px;
+      }
+
+      .header {
+        background-color: #8b7fec;
+        color: #ffffff;
+        padding: 10px 20px;
+        font-size: 24px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .subject-scores {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .subject-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .subject-container {
+        text-align: center;
+        margin: 10px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        flex: 1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subject {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: #333333;
+      }
+
+      .score {
+        font-size: 24px;
+        color: #4caf50;
+      }
+
+      .dashboard-button {
+        display: block;
+        margin: 20px auto; /* Centers the button horizontally */
+        padding: 10px 20px;
+        background-color: #8b7fec;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none; /* Ensures it's treated like a button */
+      }
+
+      .dashboard-button:hover {
+        background-color: #ff6b6b;
+      }
+      /* Responsive styling */
+      @media (max-width: 800px) {
+        .content {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .container,
+        .mock-test {
+          flex: 1 1 100%;
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="header">Subject Score</div>
+        <div class="subject-scores">
+          <div class="subject-row">
+            <div class="subject-container">
+              <div class="subject">Biology</div>
+              <div class="score">{{ scores[0] }}</div>
+            </div>
+            <div class="subject-container">
+              <div class="subject">Chemistry</div>
+              <div class="score">{{ scores[1] }}</div>
+            </div>
+            <div class="subject-container">
+              <div class="subject">Physics</div>
+              <div class="score">{{ scores[2] }}</div>
+            </div>
+          </div>
+          <div class="subject-row">
+            <div class="subject-container">
+              <div class="subject">English</div>
+              <div class="score">{{ scores[3] }}</div>
+            </div>
+            <div class="subject-container">
+              <div class="subject">Logical Reasoning</div>
+              <div class="score">{{ scores[4] }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-test">
+        <div class="header">Mock Test Result</div>
+        <div class="score" id="mockdiv">
+          {{ mock_test[1] if mock_test[1] else 'No Data' }}
+        </div>
+        <div class="score">{{ mock_test[0] }}</div>
+      </div>
+    </div>
+
+    <a href="{{ url_for('dash') }}" class="dashboard-button"
+      >Move to Dashboard</a
+    >
+  </body>
+</html>

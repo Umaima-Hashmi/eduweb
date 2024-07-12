@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Bar Example</title>
+    <style>
+      /* Basic styling for the search bar */
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+
+      .search-box {
+        padding: 10px;
+        width: 300px;
+        border: 2px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+      }
+
+      .search-button {
+        padding: 10px;
+        border: none;
+        background-color: #333;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+      }
+
+      .search-button:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <form action="/search" method="GET">
+        <input
+          type="text"
+          name="query"
+          class="search-box"
+          placeholder="Search..."
+        />
+        <button type="submit" class="search-button">Search</button>
+      </form>
+    </div>
+  </body>
+</html>

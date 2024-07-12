@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .profile-container {
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+      }
+      .profile-info {
+        max-width: 300px;
+        margin-right: 20px;
+      }
+      .profile-info img {
+        max-width: 100px;
+        border-radius: 50%;
+        display: block;
+        margin-bottom: 20px;
+      }
+      .edit-profile-form {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .edit-profile-form h2 {
+        margin-bottom: 10px;
+        color: #8b7fec;
+      }
+      .edit-profile-form label {
+        font-weight: bold;
+      }
+      .edit-profile-form input[type="text"],
+      .edit-profile-form input[type="email"],
+      .edit-profile-form input[type="password"] {
+        width: calc(100% - 30px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      .password-container {
+        position: relative;
+      }
+      .password-container input[type="password"] {
+        width: calc(100% - 40px); /* Reduced width to make space for the icon */
+        display: inline-block;
+      }
+      .password-toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px; /* Add some space between the buttons */
+      }
+      .edit-profile-form input[type="submit"],
+      .dashboard-button {
+        padding: 12px 20px;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .edit-profile-form input[type="submit"] {
+        background-color: #8b7fec;
+        color: white;
+        width: auto; /* Adjust width */
+      }
+      .edit-profile-form input[type="submit"]:hover {
+        background-color: #ff6b6b;
+      }
+      .dashboard-button {
+        background-color: #8b7fec;
+        color: white;
+        width: 150px; /* Set a specific width */
+      }
+      .dashboard-button:hover {
+        background-color: #ff6b6b;
+      }
+    </style>
+  </head>
+  <body>
+    {% if user %}
+    <div class="profile-container">
+      <div class="profile-info">
+        <img
+          src="{{ url_for('static', filename='pictures/student.png') }}"
+          alt="User Icon"
+        />
+        <h3>{{ user.username }}</h3>
+        <h3>{{ user.email }}</h3>
+      </div>
+      <div class="edit-profile-form">
+        <h2>Edit Profile</h2>
+        <form action="/update_profile" method="post">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="{{ user.username }}"
+            required
+          /><br />
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ user.email }}"
+            required
+          /><br />
+          <label for="password">New Password:</label>
+          <div class="password-container">
+            <input type="password" id="password" name="password" />
+          </div>
+          <br />
+          <div class="button-container">
+            <input type="submit" value="Update Profile" />
+            <a href="{{ url_for('dash') }}" class="dashboard-button"
+              >Go to Dashboard</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>
